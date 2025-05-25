@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="//images.icon-icons.com/1144/PNG/512/warning_80997.png" type="image/webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://code.jquery.com" crossorigin="anonymous">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://code.jquery.com">
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Evitar Block</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px 0 40px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #000000;
+      min-height: 100vh;
+      gap: 40px;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-down {
+      animation: fadeDown 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    header {
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fad0c4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 400;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 1.4;
+  background: linear-gradient(90deg, #a18cd1, #fbc2eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+    .container {
+      width: 90%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box {
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      padding: 12px 16px;
+      width: 100%;
+      min-height: 45px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+      border: 4px solid transparent;
+      background-clip: padding-box;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 16px;
+      padding: 4px;
+      background: linear-gradient(270deg, 
+        #ff0000, 
+        #ffa500, 
+        #ffff00, 
+        #008000, 
+        #0000ff, 
+        #4b0082, 
+        #ee82ee, 
+        #ff0000);
+      background-size: 1600% 1600%;
+      animation: gradientFlow 40s ease infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      z-index: -1;
+    }
+
+    .box p {
+      margin: 0;
+      padding: 0 6px;
+      font-weight: bold;
+    }
+
+    .oval-button {
+      position: relative;
+      padding: 14px 0;
+      border-radius: 12px;
+      background-color: #1c1c1c;
+      color: white;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      background-clip: padding-box;
+      z-index: 1;
+      overflow: hidden;
+      margin-top: 15px;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .oval-button:hover {
+      background-color: #0072ff;
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="fade-down delay-1">
+    <h1>Tutoriais de como evitar bloqueios</h1>
+    <p>Constantemente, as empresas estão bloqueando sites, fazendo com que eles pareçam estar fora do ar. Para evitar esse bloqueio, basta seguir o procedimento referente ao seu dispositivo nos tutoriais abaixo.</p>
+  </header>
+
+  <div class="container fade-down delay-1">
+    <div class="box">
+      <p>Sobre o aplicativo WARP</p>
+    </div>
+    <a href="https://youtu.be/EsY1M-QbB4w?si=CNTAWmKUZQ6D41iq" target="_blank" class="oval-button" title="Abrir link">
+      Acessar Vídeo
+    </a>
+  </div>
+  
+  <div class="container fade-down delay-2">
+    <div class="box">
+      <p>Baixe o app WARP pelo site</p>
+    </div>
+    <a href="https://one.one.one.one/pt-BR/" target="_blank" class="oval-button" title="Abrir link">
+      Acessar Site
+    </a>
+  </div>
+  
+  <div class="container fade-down delay-3">
+    <div class="box">
+      <p>Como trocar o DNS no Android</p>
+    </div>
+    <a href="https://www.youtube.com/watch?v=jQfmw4G8zcw" target="_blank" class="oval-button" title="Abrir link">
+      Acessar Vídeo
+    </a>
+  </div>
+
+  <div class="container fade-down delay-4">
+    <div class="box">
+      <p>Como trocar o DNS no Iphone</p>
+    </div>
+    <a href="https://www.youtube.com/watch?v=4wnuR5uop7s" target="_blank" class="oval-button" title="Abrir link">
+      Acessar Vídeo
+    </a>
+  </div>
+
+  <div class="container fade-down delay-5">
+    <div class="box">
+      <p>Como trocar o DNS no Windows</p>
+    </div>
+    <a href="https://www.youtube.com/watch?v=rZof44C1hVw" target="_blank" class="oval-button" title="Abrir link">
+      Acessar Vídeo
+    </a>
+  </div>
+
+  <div class="container fade-down delay-6">
+    <div class="box">
+      <p>Como trocar o DNS no Windows 11</p>
+    </div>
+    <a href="https://www.youtube.com/watch?v=P0HrbbEjPFQ" target="_blank" class="oval-button" title="Abrir link">
+      Acessar Vídeo
+    </a>
+  </div>
+</body>
+</html>
