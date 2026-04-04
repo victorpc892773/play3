@@ -1,4 +1,4 @@
-var ATIVO = false; // false or true true
+var ATIVO = true; // false or true true
 
 (function(){
   if(!ATIVO) return;
